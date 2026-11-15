@@ -10,7 +10,7 @@ const PRODUCTOS = [
 ];
 
 
-function ListaProductos({texto, setTexto}){
+function ListaProductos({texto}){
   const productosFiltrados = PRODUCTOS.filter((producto) =>
     producto.toLowerCase().includes(texto.trim().toLowerCase())
   );
@@ -29,7 +29,7 @@ return (
 
 
 
-function BarraBusca({texto}){
+function BarraBusca({texto, setTexto}){
   return (
     <>
     <input type="text" value={texto} onChange={(evento) =>setTexto(evento.target.value)}>
@@ -47,7 +47,7 @@ export default function BuscarProductos() {
   return (
     
     <div>
-      <BarraBusca texto={texto} ></BarraBusca>
+      <BarraBusca texto={texto} setTexto={setTexto} ></BarraBusca>
 
       <ListaProductos texto={texto}></ListaProductos>
     </div>
