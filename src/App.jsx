@@ -10,7 +10,7 @@ const PRODUCTOS = [
 ];
 
 
-function ListaProductos({texto}){
+function ListaProductos({texto, setTexto}){
   const productosFiltrados = PRODUCTOS.filter((producto) =>
     producto.toLowerCase().includes(texto.trim().toLowerCase())
   );
