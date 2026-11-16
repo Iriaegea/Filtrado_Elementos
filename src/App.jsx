@@ -1,22 +1,27 @@
 import { useState } from 'react';
+// color y conexion
+import {products} from './productos'
 
-const PRODUCTOS = [
-  'Teclado mecánico',
-  'Rato sen fíos',
-  'Monitor 4K',
-  'Auriculares bluetooth',
-  'Alfombrilla RGB',
-  'Cámara web HD'
-];
+// const PRODUCTOS = [
+//   'Teclado mecánico',
+//   'Rato sen fíos',
+//   'Monitor 4K',
+//   'Auriculares bluetooth',
+//   'Alfombrilla RGB',
+//   'Cámara web HD'
+// ];
 
 
 function ListaProductos({texto}){
-  const productosFiltrados = PRODUCTOS.filter((producto) =>
-    producto.toLowerCase().includes(texto.trim().toLowerCase())
+  const productosFiltrados = products.filter((producto) =>
+    producto.details.specifications.connection.toLowerCase().includes(texto.trim().toLowerCase)
+    //producto.connection.toLowerCase().includes(texto.trim().toLowerCase())
   );
 return (
   <>
     <ul>
+        {console.log(productosFiltrados.length)}
+        
         {productosFiltrados.length > 0 ? productosFiltrados.map((producto, i) => (
           
           <li key={i}>{producto}</li> )) : <li>Non se atopaon resultados para {texto}</li> } 
