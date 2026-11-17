@@ -13,18 +13,24 @@ import {products} from './productos'
 
 
 function ListaProductos({texto}){
-  const productosFiltrados = products.filter((producto) =>
-    producto.details.specifications.connection.toLowerCase().includes(texto.trim().toLowerCase)
-    //producto.connection.toLowerCase().includes(texto.trim().toLowerCase())
-  );
+  const productosFiltrados = products.filter((p) =>
+    p.details.specifications.connection.toLowerCase().includes(texto.trim().toLowerCase()) ||
+    p.details.specifications.color.toLowerCase().includes(texto.trim().toLowerCase()) ||
+    p.name.toLowerCase().includes(texto.trim().toLowerCase()))
+
 return (
   <>
     <ul>
         {console.log(productosFiltrados.length)}
         
-        {productosFiltrados.length > 0 ? productosFiltrados.map((producto, i) => (
+        {productosFiltrados.length > 0 ? productosFiltrados.map((p, i) => (
           
-          <li key={i}>{producto}</li> )) : <li>Non se atopaon resultados para {texto}</li> } 
+          <li key={i}>Nombre: {p.name} - Conexión: {p.details.specifications.connection} - Color: {p.details.specifications.color} </li> 
+
+        
+        )) 
+          :
+           <li>Non se atopaon resultados para {texto}</li> } 
         
     </ul>
   </>
